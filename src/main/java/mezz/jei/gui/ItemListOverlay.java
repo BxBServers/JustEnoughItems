@@ -67,9 +67,8 @@ public class ItemListOverlay implements IItemListOverlay {
 	public void setFilterText(String filterText) {
 		Preconditions.checkNotNull(filterText, "filterText cannot be null");
 
-		Config.setFilterText(filterText);
-
-		if (internal != null) {
+		boolean changed = Config.setFilterText( filterText );
+		if ( !changed && internal != null) {
 			internal.setFilterText(filterText);
 		}
 	}
